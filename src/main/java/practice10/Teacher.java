@@ -1,7 +1,5 @@
 package practice10;
 
-
-import java.util.Collection;
 import java.util.List;
 
 public class Teacher extends Person {
@@ -36,11 +34,7 @@ public class Teacher extends Person {
     }
     public String introduce(){
         if (classes==null) {
-//            if (klass == null) {
                 return super.introduce() + " I am a Teacher. I teach No Class.";
-//            }else {
-//                return super.introduce()+" I am a Teacher. I teach No Class.";
-//            }
         }else {
             return super.introduce()+" I am a Teacher. I teach Class 2, 3.";
         }
@@ -55,13 +49,6 @@ public class Teacher extends Person {
 
     }
     public boolean isTeaching(Student student){
-        System.out.println(student.getKlass().getNumber());
-//        if (this.getClasses().contains(student.getKlass().getNumber())){
-//            System.out.println("sss");
-//            return true;
-//        }else {
-//            return false;
-//        }
         if (student.getKlass().isIn(student,getClasses())){
             return true;
         }else {

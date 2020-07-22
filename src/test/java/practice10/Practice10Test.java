@@ -138,7 +138,6 @@ public class Practice10Test {
         linkedList.add(klass2);
         Teacher tom = new Teacher(1, "Tom", 21, linkedList);
         Student jerry = new Student(1, "Jerry", 8, new Klass(3));
-
         assertThat(tom.isTeaching(jerry)).isFalse();
     }
 
