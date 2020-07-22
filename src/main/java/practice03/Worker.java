@@ -1,6 +1,6 @@
 package practice03;
 
-public class Worker {
+public class Worker extends Person {
     private String name;
     private int age;
 
