@@ -37,7 +37,6 @@ public class Klass {
         else {
             System.out.println("It is not one of us.");
         }
-
     }
     public void appendMember(Student student){
 
