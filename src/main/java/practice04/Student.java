@@ -21,7 +21,7 @@ public class Student extends Person{
     }
 
     public String introduce() {
-        return "I am a Student. I am at Class 2.";
+        return super.basicIntroduce()+" I am a Student. I am at Class 2.";
     }
 
     @Override
