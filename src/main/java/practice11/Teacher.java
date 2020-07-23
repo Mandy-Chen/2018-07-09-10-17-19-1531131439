@@ -9,14 +9,13 @@ public class Teacher extends Person implements JoinListener{
 
     public Teacher(int id, String name, int age, List<Klass> classes) {
         super(id, name, age);
-        System.out.println("sssss");
         this.classes = classes;
 //        for (int i = 0; i < this.classes.size(); i++) {
 //            this.classes.get(i).registerListener(this);
 //        }
-//        this.classes.forEach(klass1 -> {
-//            klass1.registerListener(this);
-//        });
+        this.classes.forEach(klass1 -> {
+            klass1.registerListener(this);
+        });
     }
 
     public List<Klass> getClasses() {
@@ -58,7 +57,6 @@ public class Teacher extends Person implements JoinListener{
     }
     public boolean isTeaching(Student student){
         System.out.println(student.getKlass().getNumber());
-
         if (student.getKlass().isIn(student,getClasses())){
             return true;
         }else {
@@ -68,7 +66,11 @@ public class Teacher extends Person implements JoinListener{
 
     @Override
     public void update(Student student) {
-//        System.out.println("sssssss");
-        System.out.println(String.format("I am %s I know %s has joined Class 2.",this.getName(),student.getName()));
+        System.out.print(String.format("I am %s. I know %s has joined Class 2.",this.getName(),student.getName())+"\n");
+    }
+
+    @Override
+    public void updateWithLeader(Student student) {
+        System.out.print(String.format("I am %s. I know %s become Leader of Class 2.",this.getName(),student.getName())+"\n");
     }
 }

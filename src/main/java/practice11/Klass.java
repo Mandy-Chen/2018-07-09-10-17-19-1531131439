@@ -7,10 +7,9 @@ import java.util.List;
 public class Klass {
     private int number;
     private Student leader;
-    private List<JoinListener> joinListeners;
+    private List<JoinListener> joinListeners= new ArrayList<>();;
 
     public Klass() {
-        this.joinListeners = new ArrayList<>();
     }
 
     public Student getLeader() {
@@ -37,14 +36,23 @@ public class Klass {
         if(student.getKlass().getNumber()==this.getNumber()){
             if(student!=null){
                 this.leader=student;
+                student.getKlass().setNumber(this.getNumber());
+                this.joinListeners.forEach(joinListener -> {
+                    joinListener.updateWithLeader(student);
+                });
             }
         }
         else {
-            System.out.println("It is not one of us.");
+            System.out.print("It is not one of us.\n");
         }
     }
-    public void appendMember(Student student){
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void appendMember(Student student){
+        student.getKlass().setNumber(this.getNumber());
         this.joinListeners.forEach(joinListener -> {
             joinListener.update(student);
         });
@@ -58,7 +66,7 @@ public class Klass {
         }
         return flag;
     }
-//    public void registerListener(JoinListener joinListener){
-//        this.joinListeners.add(joinListener);
-//    }
+    public void registerListener(JoinListener joinListener){
+        this.joinListeners.add(joinListener);
+    }
 }
